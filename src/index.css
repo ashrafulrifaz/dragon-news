@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+   font-family: 'Poppins', sans-serif;
+}
+
+#reg-btn{
+   background: linear-gradient(90deg, #FF8C47 0%, #F75B5F 100.02%);
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   font-weight: 500;
+}
+
+#rating .icon {
+   width: 20px;
+}
+
+#add-banner {
+   background-image: url(../src/assets/bg.png);
+}
