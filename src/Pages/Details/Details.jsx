@@ -18,7 +18,7 @@ const Details = () => {
             <div className="col-span-3">
                <h2 className="text-lg text-primary font-medium">Dragon News</h2>
                <div className="border border-[#E7E7E7] rounded-md p-5 mt-4">
-
+                  <h1>hello</h1>
                </div>
             </div>
             <div>
