@@ -4,14 +4,28 @@ import Instagram from '../../assets/Instagram.png';
 import Zone1 from '../../assets/qZone1.png';
 import Zone2 from '../../assets/qZone2.png';
 import Zone3 from '../../assets/qZone3.png';
+import GoogleIcon from '../../assets/google.png';
+import GithubIcon from '../../assets/github.png';
+import { useContext } from 'react';
+import { AuthContext } from '../../Provider/Provider';
 
 const RightSideBar = () => {
+   const {googleLogin, githubLogin} = useContext(AuthContext)
+
+   const handleGoogleLogin = () => {
+      googleLogin()
+   }
+
+   const handleGithubLogin = () => {
+      githubLogin()
+   }
+
    return (
       <div>
          <div className="space-y-3">
             <h2 className="text-lg text-primary font-medium">Login With</h2>
-            <button className="text-blue-500 font-medium border border-blue-500 rounded py-1 w-full">Login with Google</button>
-            <button className="text-primary font-medium border border-primary rounded py-1 w-full">Login with Github</button>
+            <button onClick={handleGoogleLogin} className="text-blue-500 font-medium border border-blue-500 rounded py-1 w-full flex gap-2 items-center justify-center"><img src={GoogleIcon} className='w-4' /><span>Login with Google</span></button>
+            <button onClick={handleGithubLogin} className="text-primary font-medium border border-primary rounded py-1 w-full flex gap-2 items-center justify-center"><img src={GithubIcon} className='w-4' /><span>Login with Github</span></button>
          </div>
          <div className="space-y-3 mt-5">
             <h2 className="text-lg text-primary font-medium">Find Us On</h2>

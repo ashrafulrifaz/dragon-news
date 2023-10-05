@@ -2,9 +2,11 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../Components/Navbar/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/Provider";
+import GoogleIcon from '../../assets/google.png';
+import GithubIcon from '../../assets/github.png';
 
 const Register = () => {
-   const {createUser} = useContext(AuthContext)
+   const {createUser, googleLogin, githubLogin} = useContext(AuthContext)
    const navigate = useNavigate()
 
    const handleFormSubmit = e => {
@@ -20,9 +22,17 @@ const Register = () => {
          .catch(error => console.log(error.message))
    }
 
+   const handleGoogleLogin = () => {
+      googleLogin()
+   }
+
+   const handleGithubLogin = () => {
+      githubLogin()
+   }
+
    return (
       <div className="bg-[#F3F3F3] min-h-screen">
-         <div className="max-w-6xl mx-auto">
+         <div className="max-w-[85%] mx-auto">
             <Navbar></Navbar>
             <div className="py-12">
                <div className="w-1/2 mx-auto bg-white p-16">
@@ -52,6 +62,10 @@ const Register = () => {
                         </div>
                         <button className="text-white bg-primary py-2.5 px-6 font-medium w-full rounded">Register</button>
                         <p className="text-center text-[#706F6F] font-medium">Already have an account ? <Link id="reg-btn" to="/login">Login</Link></p>
+                        <div className="flex gap-3">
+                           <button onClick={handleGoogleLogin} className="text-blue-500 font-medium border border-blue-500 rounded py-1 w-full flex gap-2 items-center justify-center"><img src={GoogleIcon} className='w-4' /><span>Login with Google</span></button>
+                           <button onClick={handleGithubLogin} className="text-primary font-medium border border-primary rounded py-1 w-full flex gap-2 items-center justify-center"><img src={GithubIcon} className='w-4' /><span>Login with Github</span></button>
+                        </div>
                      </div>
                   </form>
                </div>

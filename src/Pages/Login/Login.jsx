@@ -2,9 +2,12 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../Components/Navbar/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/Provider";
+import GoogleIcon from '../../assets/google.png';
+import GithubIcon from '../../assets/github.png';
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
-   const {LogIn} = useContext(AuthContext)
+   const {LogIn, googleLogin, githubLogin} = useContext(AuthContext)
    const navigate = useNavigate()
 
    const handleLogin = e => {
@@ -20,9 +23,26 @@ const Login = () => {
          .catch(error => console.log(error.message))
    }
 
+   const handleGoogleLogin = () => {
+      const googleProvider = new GoogleAuthProvider()
+      googleLogin(googleProvider)
+      .then(() => {
+         navigate('/')
+      })
+      .catch(error => console.log(error.message))
+   }
+   const handleGithubLogin = () => {
+      const githubProvider = new GithubAuthProvider()
+      githubLogin(githubProvider)
+      .then(() => {
+         navigate('/')
+      })
+      .catch(error => console.log(error.message))
+   }
+
    return (
       <div className="bg-[#F3F3F3] min-h-screen">
-         <div className="max-w-6xl mx-auto">
+         <div className="max-w-[85%] mx-auto">
             <Navbar></Navbar>
             <div className="py-12">
                <div className="w-1/2 mx-auto bg-white p-16">
@@ -40,6 +60,10 @@ const Login = () => {
                         </div>
                         <button className="text-white bg-primary py-2.5 px-6 font-medium w-full rounded">Login</button>
                         <p className="text-center text-[#706F6F] font-medium">Do not have an account ? <Link id="reg-btn" to="/register">Register</Link></p>
+                        <div className="flex gap-3">
+                           <button onClick={handleGoogleLogin} className="text-blue-500 font-medium border border-blue-500 rounded py-1 w-full flex gap-2 items-center justify-center"><img src={GoogleIcon} className='w-4' /><span>Login with Google</span></button>
+                           <button onClick={handleGithubLogin} className="text-primary font-medium border border-primary rounded py-1 w-full flex gap-2 items-center justify-center"><img src={GithubIcon} className='w-4' /><span>Login with Github</span></button>
+                        </div>
                      </div>
                   </form>
                </div>

@@ -13,10 +13,9 @@ const LeftSideBar = () => {
          .then(res => res.json())
          .then(data => setCategoryData(data))
    }, [])
-   // console.log(catId);
 
    return (
-      <div className="sticky">
+      <div className="sticky top-0">
          <h4 className="text-lg font-medium">All Category</h4>
          <ul className="space-y-3 mt-4">
             {

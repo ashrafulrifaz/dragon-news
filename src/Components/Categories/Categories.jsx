@@ -1,19 +1,20 @@
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 import './Categories.css'
-// import { useState } from 'react';
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/Provider";
+import { NavLink } from 'react-router-dom';
 
 const Categories = ({data}) => {
-   // const [catId, setCatId] = useState(0)
+   const {setMatchesID} = useContext(AuthContext)
    const {name, id} = data;
 
-   // const handleNews = () => {
-   //    setCatId(id)
-   // }
+   const handleCategoryNews = () => {
+      setMatchesID(id)
+   }
 
    return (
       <li>
-         <NavLink>{name}</NavLink>
+         <NavLink onClick={handleCategoryNews}>{name}</NavLink>
       </li>
    );
 };
